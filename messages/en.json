@@ -1,0 +1,10 @@
+{
+	"homepage": {
+		"title": "home",
+		"link": "about us"
+	},
+	"about": {
+		"title": "about us",
+		"link": "back"
+	}
+}
