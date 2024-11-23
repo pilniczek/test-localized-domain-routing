@@ -1,8 +1,16 @@
 import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/routing';
+import {setRequestLocale} from 'next-intl/server';
 import { Box, Typography } from '@mui/material';
+ 
+export default function HomePage({
+  params: {locale}
+}: {
+  params: {locale: "en" | "cs"}
+}) {
+  // Enable static rendering
+  setRequestLocale(locale);
 
-export default function HomePage() {
   const t = useTranslations('homepage');
   return (
     <Box>
