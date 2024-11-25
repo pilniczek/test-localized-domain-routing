@@ -2,12 +2,15 @@ import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/routing';
 import {setRequestLocale} from 'next-intl/server';
 import { Box, Typography } from '@mui/material';
+import { use } from 'react'
  
 export default function HomePage({
-  params: {locale}
+  params
 }: {
   params: {locale: "en" | "cs"}
 }) {
+  const { locale } = use(params)
+
   // Enable static rendering
   setRequestLocale(locale);
 

@@ -3,6 +3,7 @@ import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
+import { use } from 'react'
 
 const theme = createTheme({});
  
@@ -12,11 +13,13 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
-  params: {locale}
+  params
 }: {
   children: React.ReactNode;
   params: {locale: "en" | "cs"};
 }) {
+  const { locale } = use(params)
+
   // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale)) {
     notFound();
