@@ -2,6 +2,10 @@ import {NextIntlClientProvider} from 'next-intl';
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import { appTheme } from '../../components/theme';
+
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
@@ -32,7 +36,11 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={appTheme}>
+              <CssBaseline />{children}
+            </ThemeProvider>
+          </AppRouterCacheProvider>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -1,5 +1,7 @@
 import {Link} from '@/i18n/routing';
 import {setRequestLocale, getTranslations} from 'next-intl/server';
+import { Box, Typography } from '@mui/material';
+import AccordionDummy from '@/components/dummy/Accordion';
 
 export default async function HomePage({
   params
@@ -14,9 +16,10 @@ export default async function HomePage({
 
   const t = await getTranslations('homepage');
   return (
-    <div>
-      <h1>{t('title')}</h1>
+    <Box>
+      <Typography variant="h1">{t('title')}</Typography>
       <Link href="/about">{t('link')}</Link>
-    </div>
+      <AccordionDummy />
+    </Box>
   );
 }

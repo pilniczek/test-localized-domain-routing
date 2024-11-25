@@ -1,5 +1,6 @@
 import {Link} from '@/i18n/routing';
 import {getTranslations, setRequestLocale} from 'next-intl/server';
+import { Box, Typography } from '@mui/material';
 
 export default async function About({
   params
@@ -14,9 +15,9 @@ export default async function About({
 
   const t = await getTranslations('about');
   return (
-    <div>
-      <h1>{t('title')}</h1>
+    <Box>
+      <Typography variant="h1">{t('title')}</Typography>
       <Link href="/">{t('link')}</Link>
-    </div>
+    </Box>
   );
 }
