@@ -1,16 +1,18 @@
-import {useTranslations} from 'next-intl';
 import {Link} from '@/i18n/routing';
-import {setRequestLocale} from 'next-intl/server';
+import {getTranslations, setRequestLocale} from 'next-intl/server';
 
-export default function About({
-  params: {locale}
+export default async function About({
+  params
 }: {
-  params: {locale: "en" | "cs"}
+  params: Promise<{locale: "en" | "cs"}>
 }) {
+
+  const { locale } = await params;
+
   // Enable static rendering
   setRequestLocale(locale);
 
-  const t = useTranslations('about');
+  const t = await getTranslations('about');
   return (
     <div>
       <h1>{t('title')}</h1>
